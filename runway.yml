@@ -1,0 +1,11 @@
+entrypoint: python runway_model.py
+python: 3.6
+cuda: 10.0
+spec:
+  cpu: False
+  gpu: True
+build_steps:
+  - conda install -y ipython && conda install -y tensorflow-gpu==1.14.0 && conda install -y -c conda-forge ffmpeg && conda install -y -c conda-forge libsndfile && conda install -y -c anaconda pandas==0.25.1
+  - apt-get install -y libsndfile1
+  - pip install .
+  - pip install runway-python librosa importlib_resources
